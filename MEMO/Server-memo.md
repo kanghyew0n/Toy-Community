@@ -1,8 +1,7 @@
 # Express
 
-- Node.js 웹 애플리케이션 프레임워크이다.
+- Node.js 웹 애플리케이션 프레임워크이다. 
 - 최소한의 기능만 탑재되어있지만 호환성 있는 미들웨어 패키지이다!
-- 
 
 <br/>
 
@@ -15,8 +14,8 @@
 
 <br/>
 
-Q. package.json 설정 VS http-proxy-middleware 차이점 ?
-A. http-proxy-middleware 은 멀티 설정이 가능하다는 점이다. '/api'를 포함하는 요청만 혹은 '/api/v1'와 '/api/v2' 이런식으로 멀티 설정이 가능하다.
+Q. package.json 설정 VS http-proxy-middleware 차이점 ? <br/>
+**A. http-proxy-middleware 은 멀티 설정이 가능하다는 점이다. '/api'를 포함하는 요청만 혹은 '/api/v1'와 '/api/v2' 이런식으로 멀티 설정이 가능하다.**
 
 <br/>
 
@@ -62,7 +61,7 @@ CommunityPost.save().then(() => {
 
 - server 폴더로 이동 후 `npm install dotenv`
 
-```
+```js
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
 ```
@@ -71,8 +70,8 @@ dotenv.config({ path: ".env" });
 
 <br/>
 
-Q. React 환경에서는 필요 없는 이유는?
-A. create-react-app은 dotenv가 내장되어있어서 별도의 설치 없이 바로 사용 가능했다!
+Q. React 환경에서는 필요 없는 이유는? <br/>
+**A. create-react-app은 dotenv가 내장되어있어서 별도의 설치 없이 바로 사용 가능했다!**
 
 <br/>
 <br/>
