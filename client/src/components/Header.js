@@ -1,19 +1,25 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-function BasicExample() {
-  return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
+import React from "react";
+import { Link } from "react-router-dom";
+import { HeaderDiv, HeaderInner, HeaderMenu } from "../Style/HeaderCss";
 
-export default BasicExample;
+const Header = () => {
+  return (
+    <HeaderDiv>
+      <HeaderInner>
+        <Link to="/">
+          <div className="logo">Toy Project</div>
+        </Link>
+        <HeaderMenu>
+          <Link to="/upload">
+            <div>업로드</div>
+          </Link>
+          <Link to="/">
+            <div>글목록</div>
+          </Link>
+        </HeaderMenu>
+      </HeaderInner>
+    </HeaderDiv>
+  );
+};
+
+export default Header;
