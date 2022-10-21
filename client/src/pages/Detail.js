@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+  DetailContainer,
+  DetailInner,
+  DetailForm,
+  DetailButtons,
+  DetailButton,
+} from "../Style/DetailCss.js";
 
 const Detail = () => {
   const params = useParams();
@@ -40,26 +47,33 @@ const Detail = () => {
         .post("/api/post/delete", body)
         .then((res) => {
           if (res.data.success) {
-            alert("삭제 완!")
-            navigate("/")
+            alert("삭제 완!");
+            navigate("/");
           }
         })
         .catch((err) => {
-          alert("삭제 실팽")
+          alert("삭제 실팽");
         });
     }
   };
 
   return (
-    <>
-      {loading}
-      <p>{postInfo.title}</p>
-      <p>{postInfo.content}</p>
-      <Link to={`/edit/${postInfo.postNum}`}>
-        <button>수정</button>
-      </Link>
-      <button onClick={handleDelte}>삭제</button>
-    </>
+    <DetailContainer>
+      <DetailInner>
+        {loading}
+        <DetailForm>
+          <p className="title">{postInfo.title}</p>
+          {postInfo.image ? <img src={`http://localhost:3001/${postInfo.image}`} alt=""/> : ""}
+          <p>{postInfo.content}</p>
+        </DetailForm>
+        <DetailButtons>
+          <Link to={`/edit/${postInfo.postNum}`}>
+            <DetailButton>수정</DetailButton>
+          </Link>
+          <DetailButton onClick={handleDelte}>삭제</DetailButton>
+        </DetailButtons>
+      </DetailInner>
+    </DetailContainer>
   );
 };
 

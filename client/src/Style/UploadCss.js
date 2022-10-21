@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
 const UploadDiv = styled.div`
-  width: 100vw;
-  height: 80vh;
+  margin-top: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,22 +21,25 @@ const UploadForm = styled.div`
   }
 
   .title {
+    font-size: 12px;
     padding: 15px;
-    background-color: #081a2e;
-    border: 1px solid #265d97;
+    border: 1px solid #666;
+    background-color: #000;
+
     &:focus {
-      outline: 1px solid #fff;
+      outline: 1px solid #eee;
     }
   }
 
   .content {
-    height: 300px;
+    font-size: 12px;
+    height: 250px;
     padding: 15px;
-    background-color: #081a2e;
-    border: 1px solid #265d97;
+    border: 1px solid #666;
+    background-color: #000;
     resize: none;
     &:focus {
-      outline: 1px solid #fff;
+      outline: 1px solid #eee;
     }
   }
 `;
@@ -45,14 +47,16 @@ const UploadForm = styled.div`
 const UploadButton = styled.button`
   display: flex;
   padding: 10px 20px;
-  color: #265d97;
+  color: #01ff30;
   justify-content: end;
-  background-color: #081a2e;
-  border: 1px solid #265d97;
+  border: 1px solid #01ff30;
   transition: all 0.2s ease-in-out;
+  background-color: #000;
+  margin-left: 10px;
+
   &:hover {
-    background-color: #265d97;
-    color: #081a2e;
+    background-color: #01ff30;
+    color: #000;
   }
 `;
 

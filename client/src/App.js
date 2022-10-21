@@ -5,6 +5,8 @@ import Upload from "./pages/Upload";
 import List from "./pages/List";
 import Detail from "./pages/Detail";
 import Edit from "./pages/Edit";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/upload/:postNum" element={<Detail />} />
           <Route path="/edit/:postNum" element={<Edit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -23,3 +27,4 @@ function App() {
 }
 
 export default App;
+

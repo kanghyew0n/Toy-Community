@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { UploadDiv, UploadForm, UploadButton } from "../Style/UploadCss";
+import ImageUpload from "../components/ImageUpload";
 
 const Upload = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const onCreate = (e) => {
@@ -17,6 +19,7 @@ const Upload = () => {
     let body = {
       title,
       content,
+      image
     };
 
     axios
@@ -24,7 +27,7 @@ const Upload = () => {
       .then((res) => {
         if (res.data.success) {
           alert("글 작성 성콩!");
-          navigate("/")
+          navigate("/");
         } else {
           alert("글 작성 실패!");
         }
@@ -42,6 +45,7 @@ const Upload = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <ImageUpload setImage={setImage}/>
         <textarea
           className="content"
           placeholder="내용을 입력해주세요"

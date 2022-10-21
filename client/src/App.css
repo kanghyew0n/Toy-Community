@@ -4,14 +4,15 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #fff;
+  color: #eee;
+
 }
 
 body {
-  background-color:#081A2E;
+  background-color:#000;
 }
 
 a {
   text-decoration: none;
-  color:  #00b3ff;
+  color:  #eee;
 }

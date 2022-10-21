@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ListContainer, ListInner, ListForm } from "../Style/ListCss";
+import axios from "axios";
 
 const List = () => {
   const [postList, setPostList] = useState([]);
@@ -18,16 +19,18 @@ const List = () => {
       });
   }, []);
   return (
-    <>
-      {postList.map((data, idx) => (
-        <div key={idx}>
-          <Link to={`/upload/${data.postNum}`}>
-            <p>제목 : {data.title}</p>
-          </Link>
-          <p>내용 : {data.content}</p>
-        </div>
-      ))}
-    </>
+    <ListContainer>
+        <ListInner>
+          {postList.map((data, idx) => (
+            <ListForm key={idx}>
+              <Link to={`/upload/${data.postNum}`}>
+                <p className="title">🚀 &nbsp; {data.title}</p>
+              </Link>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.content}</p>
+            </ListForm>
+          ))}
+        </ListInner>
+    </ListContainer>
   );
 };
 

@@ -7,14 +7,14 @@ const Header = () => {
     <HeaderDiv>
       <HeaderInner>
         <Link to="/">
-          <div className="logo">Toy Project</div>
+          <div className="logo">Community</div>
         </Link>
         <HeaderMenu>
           <Link to="/upload">
             <div>업로드</div>
           </Link>
-          <Link to="/">
-            <div>글목록</div>
+          <Link to="/login">
+            <div>로그인</div>
           </Link>
         </HeaderMenu>
       </HeaderInner>
