@@ -4,24 +4,35 @@ const multer = require("multer");
 
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
+const { User } = require("../Model/User.js");
 
 router.post("/submit", (req, res) => {
-  let temp = req.body;
+  let temp = {
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+  };
   Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
       temp.postNum = counter.postNum; // postNum을 추가해줌
-      const CommunityPost = new Post(temp);
-      CommunityPost.save().then(() => {
-        // updateOne : 하나의 doc을 업데이트 하기위한 메소드 => 쿼리 두개 받음
-        // ({어떤 doc을 업데이트 할 것 인지}, {어떻게 업데이트 할 것 인지})
-        // $inc : 증가시키는 함수
-        Counter.updateOne({ name: "counter" }, { $inc: { postNum: 1 } }).then(
-          () => {
-            res.status(200).json({ success: true });
-          }
-        );
-      });
+      User.findOne({ uid: req.body.uid })
+        .exec()
+        .then((userInfo) => {
+          temp.author = userInfo._id;
+          const CommunityPost = new Post(temp);
+          CommunityPost.save().then(() => {
+            // updateOne : 하나의 doc을 업데이트 하기위한 메소드 => 쿼리 두개 받음
+            // ({어떤 doc을 업데이트 할 것 인지}, {어떻게 업데이트 할 것 인지})
+            // $inc : 증가시키는 함수
+            Counter.updateOne(
+              { name: "counter" },
+              { $inc: { postNum: 1 } }
+            ).then(() => {
+              res.status(200).json({ success: true });
+            });
+          });
+        });
     })
     .catch((err) => {
       res.status(400).json({ success: false });
@@ -31,6 +42,7 @@ router.post("/submit", (req, res) => {
 
 router.post("/list", (req, res) => {
   Post.find() // 데이터베이스에서 document를 찾는 명령어
+    .populate("author") // ref를 가지고 author 내용이 채워짐!
     .exec() // find 이후 찾은 명령어를~
     .then((doc) => {
       // 200번 코드와 함께 postList라는 이름으로 docc을 보내준다.
@@ -43,6 +55,7 @@ router.post("/list", (req, res) => {
 
 router.post("/detail", (req, res) => {
   Post.findOne({ postNum: Number(req.body.postNum) })
+    .populate("author")
     .exec()
     .then((doc) => {
       console.log(doc);
