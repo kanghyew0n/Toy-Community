@@ -25,7 +25,12 @@ const ListForm = styled.div`
 
   .title {
     font-weight: 800;
-    margin-bottom: 3px;
+  }
+
+  .userName {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 5px;
   }
 `;
 

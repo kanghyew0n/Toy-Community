@@ -20,16 +20,23 @@ const List = () => {
   }, []);
   return (
     <ListContainer>
-        <ListInner>
-          {postList.map((data, idx) => (
+      <ListInner>
+        {postList.map((data, idx) => {
+          console.log(data);
+          return (
             <ListForm key={idx}>
               <Link to={`/upload/${data.postNum}`}>
                 <p className="title">🚀 &nbsp; {data.title}</p>
               </Link>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.content}</p>
+              <p className="userName">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {data.author.displayName}
+              </p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.content}</p>
             </ListForm>
-          ))}
-        </ListInner>
+          );
+        })}
+      </ListInner>
     </ListContainer>
   );
 };

@@ -30,6 +30,24 @@ const SignUpForm = styled.div`
       margin-bottom: 12px;
       font-size: 12px;
     }
+    .nameCheck {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 5px;
+
+      p {
+        font-size: 12px;
+        margin: 0;
+      }
+
+      button {
+        background-color: #000;
+        font-size: 12px;
+        color: #01ff30;
+        border: none;
+      }
+    }
   }
 
   .formItem:last-child {

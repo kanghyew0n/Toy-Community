@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
-
 import { UploadDiv, UploadForm, UploadButton } from "../Style/UploadCss";
 import ImageUpload from "../components/ImageUpload";
 
@@ -9,7 +9,16 @@ const Upload = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!user.accessToken) {
+      alert("로그인한 회원만 글 작성 가능합니다!");
+      navigate("/login");
+    }
+  }, []);
 
   const onCreate = (e) => {
     if (title === "" || content === "") {
@@ -19,7 +28,8 @@ const Upload = () => {
     let body = {
       title,
       content,
-      image
+      image,
+      uid: user.uid,
     };
 
     axios
@@ -45,7 +55,7 @@ const Upload = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <ImageUpload setImage={setImage}/>
+        <ImageUpload setImage={setImage} />
         <textarea
           className="content"
           placeholder="내용을 입력해주세요"

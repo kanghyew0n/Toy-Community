@@ -31,7 +31,7 @@ const LoginForm = styled.div`
     }
   }
 
-  .formItem:nth-child(2) {
+  .formItem:nth-of-type(2) {
     margin-bottom: 30px;
   }
 

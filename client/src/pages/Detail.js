@@ -8,12 +8,14 @@ import {
   DetailButtons,
   DetailButton,
 } from "../Style/DetailCss.js";
+import { useSelector } from "react-redux";
 
 const Detail = () => {
-  const params = useParams();
-  const navigate = useNavigate();
   const [postInfo, setPostInfo] = useState({});
   const [loading, setLoading] = useState(false);
+  const params = useParams();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     let body = {
@@ -63,15 +65,24 @@ const Detail = () => {
         {loading}
         <DetailForm>
           <p className="title">{postInfo.title}</p>
-          {postInfo.image ? <img src={`http://localhost:3001/${postInfo.image}`} alt=""/> : ""}
+          {postInfo.image ? (
+            <img src={`http://localhost:3001/${postInfo.image}`} alt="" />
+          ) : (
+            ""
+          )}
+          <p className="userName">
+            {postInfo.author && postInfo.author.displayName}
+          </p>
           <p>{postInfo.content}</p>
         </DetailForm>
-        <DetailButtons>
-          <Link to={`/edit/${postInfo.postNum}`}>
-            <DetailButton>수정</DetailButton>
-          </Link>
-          <DetailButton onClick={handleDelte}>삭제</DetailButton>
-        </DetailButtons>
+        {postInfo.author && user.uid === postInfo.author.uid && (
+          <DetailButtons>
+            <Link to={`/edit/${postInfo.postNum}`}>
+              <DetailButton>수정</DetailButton>
+            </Link>
+            <DetailButton onClick={handleDelte}>삭제</DetailButton>
+          </DetailButtons>
+        )}
       </DetailInner>
     </DetailContainer>
   );
