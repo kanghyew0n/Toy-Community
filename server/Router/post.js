@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
+// const multer = require("multer");
 
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
 const { User } = require("../Model/User.js");
+
+const setUpload = require("../Util/upload.js");
 
 router.post("/submit", (req, res) => {
   let temp = {
@@ -93,6 +95,7 @@ router.post("/delete", (req, res) => {
     });
 });
 
+/* 로컬 이미지 저장
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "image/");
@@ -103,16 +106,14 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage }).single("file");
+*/
 
-router.post("/image/upload", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      res.status(400).json({ success: false });
-    } else {
-      res.status(200).json({ success: true, filePath: res.req.file.path });
-    }
-  });
-  console.log(req.body, req.formData);
-});
+router.post(
+  "/image/upload",
+  setUpload("toy-community/post"),
+  (req, res, next) => {
+    res.status(200).json({ success: true, filePath: res.req.file.location });
+  }
+);
 
 module.exports = router;

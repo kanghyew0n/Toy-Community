@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+
 const app = express();
 const port = 3001;
+const config = require("./config/key.js")
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
 
@@ -19,7 +21,7 @@ app.listen(port, () => {
   // 데이테베이스 연결 시도
   mongoose
     .connect(
-      `mongodb+srv://kanghyew0n:${process.env.SERVER_DB_PW}@cluster0.uoxanxt.mongodb.net/Community?retryWrites=true&w=majority`
+      `mongodb+srv://kanghyew0n:${config.SERVER_DB_PW}@cluster0.uoxanxt.mongodb.net/Community?retryWrites=true&w=majority`
     )
     .then(() => {
       console.log(`Example app listening on port ${port}`);
