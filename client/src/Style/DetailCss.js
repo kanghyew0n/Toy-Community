@@ -32,6 +32,11 @@ const DetailForm = styled.div`
     color: #999;
     margin-bottom: 5px;
   }
+
+  img {
+    width: 100%;
+    margin: 20px 0;
+  }
 `;
 
 const DetailButtons = styled.div`

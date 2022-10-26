@@ -65,14 +65,11 @@ const Detail = () => {
         {loading}
         <DetailForm>
           <p className="title">{postInfo.title}</p>
-          {postInfo.image ? (
-            <img src={`http://localhost:3001/${postInfo.image}`} alt="" />
-          ) : (
-            ""
-          )}
           <p className="userName">
             {postInfo.author && postInfo.author.displayName}
           </p>
+          {postInfo.image ? <img src={postInfo.image} alt="" /> : ""}
+
           <p>{postInfo.content}</p>
         </DetailForm>
         {postInfo.author && user.uid === postInfo.author.uid && (
