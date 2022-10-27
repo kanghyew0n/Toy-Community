@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/post", require("./Router/post.js")); // 라우터 파일 가져와서 사용 가능하게 함
 app.use("/api/user", require("./Router/user.js")); // 라우터 파일 가져와서 사용 가능하게 함
+app.use("/api/reply", require("./Router/reply.js")); // 라우터 파일 가져와서 사용 가능하게 함
 
 app.listen(port, () => {
   // 데이테베이스 연결 시도
