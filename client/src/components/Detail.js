@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -10,34 +10,10 @@ import {
 } from "../Style/DetailCss.js";
 import { useSelector } from "react-redux";
 
-const Detail = () => {
-  const [postInfo, setPostInfo] = useState({});
-  const [loading, setLoading] = useState(false);
+const Detail = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-
-  useEffect(() => {
-    let body = {
-      postNum: params.postNum,
-    };
-
-    axios
-      .post("/api/post/detail", body)
-      .then((res) => {
-        if (res.data.success) {
-          setPostInfo(res.data.post);
-          setLoading(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    console.log(postInfo);
-  }, [postInfo]);
 
   const handleDelte = () => {
     if (window.confirm("삭제 진행합니까?")) {
@@ -62,19 +38,22 @@ const Detail = () => {
   return (
     <DetailContainer>
       <DetailInner>
-        {loading}
         <DetailForm>
-          <p className="title">{postInfo.title}</p>
+          <p className="title">{props.postInfo.title}</p>
           <p className="userName">
-            {postInfo.author && postInfo.author.displayName}
+            {props.postInfo.author && props.postInfo.author.displayName}
           </p>
-          {postInfo.image ? <img src={postInfo.image} alt="" /> : ""}
+          {props.postInfo.image ? (
+            <img src={props.postInfo.image} alt="" />
+          ) : (
+            ""
+          )}
 
-          <p>{postInfo.content}</p>
+          <p>{props.postInfo.content}</p>
         </DetailForm>
-        {postInfo.author && user.uid === postInfo.author.uid && (
+        {props.postInfo.author && user.uid === props.postInfo.author.uid && (
           <DetailButtons>
-            <Link to={`/edit/${postInfo.postNum}`}>
+            <Link to={`/edit/${props.postInfo.postNum}`}>
               <DetailButton>수정</DetailButton>
             </Link>
             <DetailButton onClick={handleDelte}>삭제</DetailButton>

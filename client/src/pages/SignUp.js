@@ -31,7 +31,7 @@ const SignUp = () => {
       return alert("비밀번호가 일치하지 않습니다!");
     }
 
-    if (userNameCheck) {
+    if (!userNameCheck) {
       return alert("중복 검사를 해주세요!");
     }
 

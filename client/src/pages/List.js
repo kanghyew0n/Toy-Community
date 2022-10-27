@@ -22,7 +22,6 @@ const List = () => {
     <ListContainer>
       <ListInner>
         {postList.map((data, idx) => {
-          console.log(data);
           return (
             <ListForm key={idx}>
               <Link to={`/upload/${data.postNum}`}>
