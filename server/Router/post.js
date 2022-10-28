@@ -43,8 +43,23 @@ router.post("/submit", (req, res) => {
 });
 
 router.post("/list", (req, res) => {
-  Post.find() // 데이터베이스에서 document를 찾는 명령어
+  let sort = {};
+  if (req.body.sort === "최신순") {
+    sort.createdAt = -1;
+  } else {
+    sort.replyNum = -1;
+  }
+
+  Post.find({
+    $or: [
+      { title: { $regex: req.body.search } },
+      { content: { $regex: req.body.search } },
+    ],
+  }) // 데이터베이스에서 document를 찾는 명령어
     .populate("author") // ref를 가지고 author 내용이 채워짐!
+    .sort(sort)
+    .skip(req.body.skip)
+    .limit(5) // 한번 부를때 오는 데이터 수
     .exec() // find 이후 찾은 명령어를~
     .then((doc) => {
       // 200번 코드와 함께 postList라는 이름으로 docc을 보내준다.
