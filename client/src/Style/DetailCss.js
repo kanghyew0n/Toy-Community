@@ -30,12 +30,33 @@ const DetailForm = styled.div`
   .userName {
     font-size: 14px;
     color: #999;
-    margin-bottom: 5px;
   }
 
   img {
     width: 100%;
     margin: 20px 0;
+  }
+
+  .topContent {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    img {
+      margin: 0;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .smallContent {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    p {
+      font-size: 14px;
+      color: #999;
+    }
   }
 `;
 

@@ -31,6 +31,26 @@ const ReplyGroup = styled.div`
       }
     }
   }
+
+  .contentArea {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    img {
+      margin: 0;
+    }
+  }
+
+  .smallContent {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    p {
+      font-size: 14px;
+      color: #999;
+    }
+  }
 `;
 
 export { ListDiv, ReplyGroup };

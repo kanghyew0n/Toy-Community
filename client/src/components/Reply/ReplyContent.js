@@ -3,6 +3,9 @@ import { ReplyGroup } from "../../Style/Reply/ReplyListCss";
 import { useSelector } from "react-redux";
 import { UploadrDiv } from "../../Style/Reply/ReplyUploadCss";
 import axios from "axios";
+import Avatar from "react-avatar";
+import moment from "moment";
+import "moment/locale/ko";
 
 const ReplyContent = (props) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -31,7 +34,7 @@ const ReplyContent = (props) => {
     if (window.confirm("삭제 진행합니까?")) {
       let body = {
         replyId: props.reply._id,
-        postId : props.reply.postId
+        postId: props.reply.postId,
       };
 
       axios
@@ -64,8 +67,18 @@ const ReplyContent = (props) => {
       ) : (
         <ReplyGroup>
           <div className="contentArea">
-            <div className="author">{props.reply.author.displayName}</div>
-            <div className="content"> {props.reply.reply}</div>
+            <Avatar
+              size="40"
+              round={true}
+              src={props.reply.author && props.reply.author.photoURL}
+            />
+            <div className="userContent">
+              <div className="smallContent">
+              <div className="author">{props.reply.author.displayName}</div>
+              <div className="author">{moment(props.reply.createdAt).format("LLL")}</div>
+              </div>
+              <div className="content"> {props.reply.reply}</div>
+            </div>
           </div>
           {props.reply.author.uid === user.uid && (
             <div className="btnArea">

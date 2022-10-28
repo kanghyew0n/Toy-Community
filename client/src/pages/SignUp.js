@@ -35,20 +35,23 @@ const SignUp = () => {
       return alert("중복 검사를 해주세요!");
     }
 
-    // 파이어베이스에 값을 채우기 전까지 기다려주쎄용~
     const createdUser = await firebase
       .auth()
       .createUserWithEmailAndPassword(userID, userPW);
 
     await createdUser.user.updateProfile({
       displayName: userName,
+      photoURL:
+        "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
     });
-    
+
     console.log("createdUser", createdUser);
     const body = {
       email: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
       uid: createdUser.user.multiFactor.user.uid,
+      photoURL:
+        "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
     };
 
     axios.post("/api/user/register", body).then((res) => {

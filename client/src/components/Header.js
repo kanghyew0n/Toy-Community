@@ -26,7 +26,12 @@ const Header = () => {
           </Link>
           {/* 기본적으로 빈 문자열 false로 리턴 */}
           {user.accessToken ? (
-            <div onClick={handleLogOut}>로그아웃</div>
+            <>
+              <Link to="/mypage">
+                <div>마이페이지</div>
+              </Link>
+              <div onClick={handleLogOut}>로그아웃</div>
+            </>
           ) : (
             <Link to="/login">
               <div>로그인</div>

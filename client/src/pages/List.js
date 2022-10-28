@@ -1,42 +1,47 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ListContainer, ListInner, ListForm } from "../Style/ListCss";
-import axios from "axios";
+import {  ListForm } from "../Style/ListCss";
+import Avatar from "react-avatar";
+import moment from "moment";
+import "moment/locale/ko";
 
-const List = () => {
-  const [postList, setPostList] = useState([]);
 
-  useEffect(() => {
-    axios
-      .post("/api/post/list")
-      .then((res) => {
-        if (res.data.success) {
-          setPostList([...res.data.postList]);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+const List = (props) => {
+  const setTime = (a, b) => {
+    if (a !== b) {
+      return moment(b).format("LLL") + " (수정됨)";
+    } else {
+      return moment(a).format("LLL");
+    }
+  };
+
   return (
-    <ListContainer>
-      <ListInner>
-        {postList.map((data, idx) => {
+    <>
+        {props.postList.map((data, idx) => {
           return (
             <ListForm key={idx}>
-              <Link to={`/upload/${data.postNum}`}>
-                <p className="title">🚀 &nbsp; {data.title}</p>
-              </Link>
-              <p className="userName">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {data.author.displayName}
-              </p>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.content}</p>
+              <div className="topContent">
+                <Avatar
+                  size="40"
+                  round={true}
+                  src={data.author && data.author.photoURL}
+                />
+                <div className="userContent">
+                  <Link to={`/upload/${data.postNum}`}>
+                    <p className="title">{data.title}</p>
+                  </Link>
+                  <div className="smallContent">
+                    <p className="userName">{data.author.displayName}</p>
+                    <p className="date">
+                      {setTime(data.createdAt, data.updatedAt)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p>{data.content}</p>
             </ListForm>
           );
         })}
-      </ListInner>
-    </ListContainer>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAK_POINT_TABLET, BREAK_POINT_PHONE } from "../constant";
 
 const UploadDiv = styled.div`
   margin-top: 48px;
@@ -14,6 +15,7 @@ const UploadForm = styled.div`
   row-gap: 32px;
   font-family: "Galmuri9";
   font-size: 14px;
+  transition: all 0.3s;
 
   .buttonBox {
     display: flex;
@@ -42,6 +44,13 @@ const UploadForm = styled.div`
       outline: 1px solid #eee;
     }
   }
+
+  @media only screen and (max-width: ${BREAK_POINT_TABLET}px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    width: 90%;
+  }
 `;
 
 const UploadButton = styled.button`
@@ -53,6 +62,11 @@ const UploadButton = styled.button`
   transition: all 0.2s ease-in-out;
   background-color: #000;
   margin-left: 10px;
+  font-size: 14px;
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    padding: 7px 15px;
+    font-size: 12px;
+  }
 
   &:hover {
     background-color: #01ff30;
@@ -60,4 +74,11 @@ const UploadButton = styled.button`
   }
 `;
 
-export { UploadDiv, UploadForm, UploadButton };
+const Image = styled.div`
+  font-size: 14px;
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    font-size: 12px;
+  }
+`;
+
+export { UploadDiv, UploadForm, UploadButton, Image };

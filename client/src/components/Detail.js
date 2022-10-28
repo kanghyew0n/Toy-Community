@@ -1,6 +1,10 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Avatar from "react-avatar";
+import { useSelector } from "react-redux";
+import moment from "moment";
+import "moment/locale/ko";
 import {
   DetailContainer,
   DetailInner,
@@ -8,7 +12,6 @@ import {
   DetailButtons,
   DetailButton,
 } from "../Style/DetailCss.js";
-import { useSelector } from "react-redux";
 
 const Detail = (props) => {
   const params = useParams();
@@ -35,14 +38,37 @@ const Detail = (props) => {
     }
   };
 
+  const setTime = (a, b) => {
+    if (a !== b) {
+      return moment(b).format("LLL") + " (수정됨)";
+    } else {
+      return moment(a).format("LLL");
+    }
+  };
+
   return (
     <DetailContainer>
       <DetailInner>
         <DetailForm>
-          <p className="title">{props.postInfo.title}</p>
-          <p className="userName">
-            {props.postInfo.author && props.postInfo.author.displayName}
-          </p>
+          <div className="topContent">
+            <Avatar
+              size="40"
+              round={true}
+              src={props.postInfo.author && props.postInfo.author.photoURL}
+            />
+            <div className="userContent">
+              <p className="title">{props.postInfo.title}</p>
+              <div className="smallContent">
+                <p className="userName">
+                  {props.postInfo.author && props.postInfo.author.displayName}
+                </p>
+                <p className="date">
+                  {setTime(props.postInfo.createdAt, props.postInfo.updatedAt)}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {props.postInfo.image ? (
             <img src={props.postInfo.image} alt="" />
           ) : (
