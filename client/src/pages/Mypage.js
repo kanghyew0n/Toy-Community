@@ -40,7 +40,7 @@ const Mypage = () => {
 
     let body = {
       photoURL: currentImg,
-      uid : user.uid
+      uid: user.uid,
     };
 
     axios.post("/api/user/profile/update", body).then((res) => {
@@ -63,7 +63,9 @@ const Mypage = () => {
             accept="image/*"
             onChange={(e) => handleImageUpload(e)}
           />
-          <Avatar size="100" round={true} src={currentImg} />
+          <div className="imgDiv">
+            <Avatar size="100" round={true} src={currentImg} />
+          </div>
         </label>
       </form>
       <div className="btn">

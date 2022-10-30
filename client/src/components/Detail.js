@@ -51,11 +51,14 @@ const Detail = (props) => {
       <DetailInner>
         <DetailForm>
           <div className="topContent">
+            <div className="imgDiv">
             <Avatar
               size="40"
               round={true}
               src={props.postInfo.author && props.postInfo.author.photoURL}
             />
+            </div>
+            
             <div className="userContent">
               <p className="title">{props.postInfo.title}</p>
               <div className="smallContent">

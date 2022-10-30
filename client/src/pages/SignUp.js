@@ -23,16 +23,28 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSignUp = async () => {
+    const emailRegex =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
     setFlag(true);
     if (!(userName && userID && userPW && userPWCheck)) {
       return alert("모든 값을 채워주세요!");
     }
-    if (userPW !== userPWCheck) {
-      return alert("비밀번호가 일치하지 않습니다!");
-    }
 
     if (!userNameCheck) {
       return alert("중복 검사를 해주세요!");
+    }
+
+    if (!emailRegex.test(userID)) {
+      return alert("아이디는 이메일 형식으로 작성부탁!");
+    }
+
+    if (userPW.length < 6) {
+      return alert("비밀번호는 6자 이상 부탁드려용");
+    }
+
+    if (userPW !== userPWCheck) {
+      return alert("비밀번호가 일치하지 않습니다!");
     }
 
     const createdUser = await firebase
@@ -54,14 +66,19 @@ const SignUp = () => {
         "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
     };
 
-    axios.post("/api/user/register", body).then((res) => {
-      setFlag(false);
-      if (res.data.success) {
-        navigate("/login");
-      } else {
-        return alert("회원가입에 실패하였습니다.");
-      }
-    });
+    axios
+      .post("/api/user/register", body)
+      .then((res) => {
+        setFlag(false);
+        if (res.data.success) {
+          navigate("/login");
+        } else {
+          return alert("회원가입에 실패하였습니다.");
+        }
+      })
+      .catch((err) => {
+        console.log("err : ", err);
+      });
   };
 
   const handleCheckUserName = () => {
@@ -106,7 +123,7 @@ const SignUp = () => {
             <div className="title">아이디</div>
             <input
               type="text"
-              placeholder="아이디를 입력해주세요"
+              placeholder="아이디를 입력해주세요 (이메일 형식)"
               value={userID}
               onChange={(e) => setUserID(e.target.value)}
             />
@@ -115,7 +132,7 @@ const SignUp = () => {
             <div className="title">비밀번호</div>
             <input
               type="password"
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="비밀번호를 입력해주세요 (6자 이상)"
               value={userPW}
               onChange={(e) => setUserPW(e.target.value)}
             />
@@ -131,7 +148,8 @@ const SignUp = () => {
           </div>
         </SignUpForm>
         <SignUpButtons>
-          <button className="signUpBtn" onClick={onSignUp} disabled={flag}>
+          <button className="signUpBtn" onClick={onSignUp}>
+            {/* disabled={flag} */}
             회원가입
           </button>
         </SignUpButtons>

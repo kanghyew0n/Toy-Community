@@ -63,6 +63,7 @@ const UploadButton = styled.button`
   background-color: #000;
   margin-left: 10px;
   font-size: 14px;
+  transition: all 0.3s;
   @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
     padding: 7px 15px;
     font-size: 12px;

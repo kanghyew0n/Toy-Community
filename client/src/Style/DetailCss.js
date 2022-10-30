@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAK_POINT_PHONE } from "../constant";
 
 const DetailContainer = styled.div`
   margin-top: 48px;
@@ -12,6 +13,9 @@ const DetailInner = styled.div`
   row-gap: 32px;
   align-items: center;
   margin: 0 auto;
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    width: 90%;
+  }
 `;
 
 const DetailForm = styled.div`
@@ -46,13 +50,18 @@ const DetailForm = styled.div`
       margin: 0;
       width: 40px;
       height: 40px;
+      object-fit: cover;
     }
   }
 
   .smallContent {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
+    @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+      gap: 0px;
+    }
     p {
       font-size: 14px;
       color: #999;
@@ -77,6 +86,11 @@ const DetailButton = styled.button`
   transition: all 0.2s ease-in-out;
   background-color: #000;
   font-size: 14px;
+  transition: all 0.3s;
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    padding: 7px 15px;
+    font-size: 12px;
+  }
 
   &:hover {
     background-color: #01ff30;

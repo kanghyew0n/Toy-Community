@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAK_POINT_PHONE } from "../constant";
 
 const SignUpDiv = styled.div`
   margin-top: 48px;
@@ -13,6 +14,10 @@ const SignUpInner = styled.div`
   border: 1px solid #333;
   font-family: "Galmuri9";
   padding: 50px;
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    padding: 50px 30px;
+    width: 90%;
+  }
 
   p {
     text-align: center;

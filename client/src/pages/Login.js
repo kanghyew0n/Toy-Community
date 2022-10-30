@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <LoginDiv>
       <LoginInner>
-        <p>로그인</p>
+        <p className="loginTitle">로그인</p>
         <LoginForm>
           <div className="formItem">
             <div className="title">아이디</div>

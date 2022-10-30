@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAK_POINT_PHONE } from "../../constant";
 
 const ListDiv = styled.div`
   margin-top: 20px;
@@ -11,6 +12,10 @@ const ReplyGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    padding: 15px 0;
+  }
 
   .author {
     font-size: 14px;
@@ -46,6 +51,10 @@ const ReplyGroup = styled.div`
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-wrap: wrap;
+    @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+      gap: 0px;
+    }
     p {
       font-size: 14px;
       color: #999;

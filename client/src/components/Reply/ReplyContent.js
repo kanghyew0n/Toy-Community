@@ -67,15 +67,19 @@ const ReplyContent = (props) => {
       ) : (
         <ReplyGroup>
           <div className="contentArea">
-            <Avatar
-              size="40"
-              round={true}
-              src={props.reply.author && props.reply.author.photoURL}
-            />
+            <div className="imgDiv">
+              <Avatar
+                size="40"
+                round={true}
+                src={props.reply.author && props.reply.author.photoURL}
+              />
+            </div>
             <div className="userContent">
               <div className="smallContent">
-              <div className="author">{props.reply.author.displayName}</div>
-              <div className="author">{moment(props.reply.createdAt).format("LLL")}</div>
+                <div className="author">{props.reply.author.displayName}</div>
+                <div className="author">
+                  {moment(props.reply.createdAt).format("LLL")}
+                </div>
               </div>
               <div className="content"> {props.reply.reply}</div>
             </div>

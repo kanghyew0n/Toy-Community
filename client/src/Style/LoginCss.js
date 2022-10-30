@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAK_POINT_PHONE } from "../constant";
 
 const LoginDiv = styled.div`
   margin-top: 48px;
@@ -17,6 +18,16 @@ const LoginInner = styled.div`
     text-align: center;
     font-size: 18px;
     margin-bottom: 32px;
+  }
+  @media only screen and (max-width: ${BREAK_POINT_PHONE}px) {
+    padding: 50px 30px;
+    width: 90%;
+    p {
+      font-size: 14px;
+    }
+    .loginTitle {
+      font-size: 18px;
+    }
   }
 `;
 
