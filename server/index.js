@@ -3,7 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const config = require("./config/key.js")
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
