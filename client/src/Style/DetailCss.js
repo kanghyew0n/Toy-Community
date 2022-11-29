@@ -46,10 +46,9 @@ const DetailForm = styled.div`
     gap: 12px;
     align-items: center;
     margin-bottom: 10px;
-    img {
+
+    .sb-avatar__image {
       margin: 0;
-      width: 40px;
-      height: 40px;
       object-fit: cover;
     }
   }

@@ -71,7 +71,7 @@ const SignUp = () => {
       .then((res) => {
         setFlag(false);
         if (res.data.success) {
-          navigate("/login");
+          navigate("/");
         } else {
           return alert("회원가입에 실패하였습니다.");
         }
