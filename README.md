@@ -1,8 +1,8 @@
 # Toy-Community 😎 🔫 📸 🍀 😇 
 
 
-#### • 1차 배포 : https://toy-community.herokuapp.com/
-
+#### • 1차 배포 : https://toy-community.herokuapp.com/  → 다시 배포하기
+#### • JavaScript → TypeScript 마이그레이션 진행
 <br/>
 
 ### 🚀 추가 수정사항
