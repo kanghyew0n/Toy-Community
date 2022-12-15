@@ -57,7 +57,6 @@ const SignUp = () => {
         "https://kr.object.ncloudstorage.com/react-community/user/profile.png",
     });
 
-    console.log("createdUser", createdUser);
     const body = {
       email: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
@@ -149,7 +148,6 @@ const SignUp = () => {
         </SignUpForm>
         <SignUpButtons>
           <button className="signUpBtn" onClick={onSignUp}>
-            {/* disabled={flag} */}
             회원가입
           </button>
         </SignUpButtons>

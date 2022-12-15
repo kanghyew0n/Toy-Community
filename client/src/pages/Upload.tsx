@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { UploadDiv, UploadForm, UploadButton } from "../Style/UploadCss";
 import ImageUpload from "../components/ImageUpload";
+import { RootState } from "../Reducer/store";
+
 
 const Upload = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +13,7 @@ const Upload = () => {
   const [image, setImage] = useState("");
 
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state:RootState) => state.user);
 
   useEffect(() => {
     if (!user.accessToken) {
@@ -20,7 +22,7 @@ const Upload = () => {
     }
   }, []);
 
-  const onCreate = (e) => {
+  const onCreate = () => {
     if (title === "" || content === "") {
       return alert("항목을 모두 입력해주세요!");
     }
@@ -63,7 +65,7 @@ const Upload = () => {
           onChange={(e) => setContent(e.target.value)}
         />
         <div className="buttonBox">
-          <UploadButton onClick={(e) => onCreate(e)}>올리기</UploadButton>
+          <UploadButton onClick={onCreate}>올리기</UploadButton>
         </div>
       </UploadForm>
     </UploadDiv>

@@ -3,9 +3,14 @@ import ReplyList from "./ReplyList";
 import ReplyUpload from "./ReplyUpload";
 import { AreaDiv } from "../../Style/Reply/ReplyAreaCss";
 import { useSelector } from "react-redux";
+import { RootState } from "../../Reducer/store";
 
-const ReplyArea = (props) => {
-  const user = useSelector((state) => state.user);
+type ReplyAreaProps = {
+  postId: string;
+}
+
+const ReplyArea = (props:ReplyAreaProps) => {
+  const user = useSelector((state:RootState) => state.user);
   return (
     <AreaDiv>
        <h2>댓글 👀</h2>

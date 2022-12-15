@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { HeaderDiv, HeaderInner, HeaderMenu } from "../Style/HeaderCss";
 import { useSelector } from "react-redux";
 import firebase from "../firebase";
+import { RootState } from "../Reducer/store";
 
 const Header = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state:RootState) => state.user);
   const navigate = useNavigate();
 
   const handleLogOut = () => {

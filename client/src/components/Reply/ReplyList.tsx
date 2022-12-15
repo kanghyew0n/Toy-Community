@@ -3,7 +3,11 @@ import axios from "axios";
 import { ListDiv } from "../../Style/Reply/ReplyListCss";
 import ReplyContent from "./ReplyContent";
 
-const ReplyList = (props) => {
+type ReplyListProps = {
+  postId: string;
+}
+
+const ReplyList = (props:ReplyListProps) => {
   const [replyList, setReplyList] = useState([]);
 
   useEffect(() => {
