@@ -1,14 +1,22 @@
 # Toy-Community 😎 🔫 📸 🍀 😇 
 
 
-#### • 1차 배포 : https://toy-community.herokuapp.com/  → 다시 배포하기
-#### • JavaScript → TypeScript 마이그레이션 진행
+### 1차 배포 : https://toy-community.herokuapp.com/  → 다시 배포하기
+* heroku 유료 전환으로 fly.io로 재배포!
+### 2차 배포 : https://toy-community.fly.dev/ 
+### JavaScript → TypeScript 마이그레이션 진행
+
 <br/>
 
-### 🚀 추가 수정사항
-1. 회원가입 성공하면 로그인이 된 상태지만 로그인 창으로 이동함 → 회원가입 성공시 메인화면으로 이동!
-    a. 메인화면으로 루트 걸어놓음, 회원정보 가지고 로그인 되어있는 상태여야 함
-2. 회원가입을 하기 위해서 로그인 창을 통해 가야하는 점 → 헤더에 회원가입 추가하기
-3. 이미지 업로드 시간이 꽤 오래걸림 → 이미지 URL 받아오기 전까지 버튼 비활성화
-4. 로딩중인지 구분이 안됨! → 로딩 컴포넌트 추가 
+### fly.io 배포 에러
+https://fly.io/docs/getting-started/troubleshooting/
+* Port Checking
+    * 서버 port가 3001 || env.port 해놨었는데 3001포트 사용이 안됐었다..!
+* env 설정
+    * mongoDB가 불러지지 않아 서버가 켜지지 않았다.
+    * env 설정을 바꾸거나 비밀번호를 새로 발급받아야 했지만 코드를 올린게 아니라서 그냥 env 없이 진행했다 (DB만) 
+* 로그 확인
+    * `flyctl logs` 로 로그 확인하기!
 
+<br/>
+<br/>
