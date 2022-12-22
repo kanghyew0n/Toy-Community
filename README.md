@@ -1,14 +1,17 @@
-# Toy-Community 😎 🔫 📸 🍀 😇 
+# Toy-Community 📸
 
 
-### 1차 배포 : https://toy-community.herokuapp.com/  → 다시 배포하기
-* heroku 유료 전환으로 fly.io로 재배포!
-### 2차 배포 : https://toy-community.fly.dev/ 
-### JavaScript → TypeScript 마이그레이션 진행
+**✅ 1차 배포 : https://toy-community.herokuapp.com/**
+<br/>
+
+**✅ 2차 배포 : https://toy-community.fly.dev/**
+ <br/>
+ 
+**✅ JavaScript → TypeScript 마이그레이션 진행**
 
 <br/>
 
-### fly.io 배포 에러
+### ⚠️ fly.io 배포 에러
 https://fly.io/docs/getting-started/troubleshooting/
 * Port Checking
     * 서버 port가 3001 || env.port 해놨었는데 3001포트 사용이 안됐었다..!
